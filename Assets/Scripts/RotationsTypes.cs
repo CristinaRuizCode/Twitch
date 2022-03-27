@@ -70,7 +70,7 @@ public class RotationsTypes : MonoBehaviour
     /// </summary>
     private void FixedUpdate()
     {
-
+        Debug.LogError("ESTOY EN DEVELOP");
     }
 
     /// <summary>
