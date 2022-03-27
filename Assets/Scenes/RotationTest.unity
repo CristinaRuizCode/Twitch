@@ -429,8 +429,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 519708339}
-  rotations: 6
-  rotationSpeed: 0.2
+  actualrotation: 0
+  rotationSpeed: 3
   movementSpeed: 3
 --- !u!54 &544494777
 Rigidbody:

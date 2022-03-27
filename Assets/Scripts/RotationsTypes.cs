@@ -7,7 +7,7 @@ public class RotationsTypes : MonoBehaviour
     public Transform target;
 
     private enum TypesRotations { LookRotation, LookAt, RotateTowards, Slerp, AddTorque, MoveRotation, MoveAndRotatePlayer };
-    [SerializeField] private TypesRotations rotations;
+    [SerializeField] private TypesRotations actualrotation;
     [SerializeField] private float rotationSpeed= 1f;
     [SerializeField] private float movementSpeed= 1f;
 
@@ -33,7 +33,7 @@ public class RotationsTypes : MonoBehaviour
     void Update()
     {
        
-        switch (rotations)
+        switch (actualrotation)
         {
             case TypesRotations.LookRotation:
                 RotateWithLookRotation();
@@ -121,7 +121,7 @@ public class RotationsTypes : MonoBehaviour
 
     private void RotateWithAddTorque()
     {
-        rb.AddTorque(transform.up * rotationSpeed  *Time.deltaTime);
+        rb.AddTorque(transform.right * rotationSpeed  *Time.deltaTime);
     }
 
     private void RotateWithMoveRotation()
@@ -136,7 +136,7 @@ public class RotationsTypes : MonoBehaviour
         float moveVertical = Input.GetAxisRaw("Vertical");
 
         Vector3 movement = new Vector3(moveHorizontal, 0.0f, moveVertical);
-        transform.rotation = Quaternion.LookRotation(movement);
+        //transform.rotation = Quaternion.LookRotation(movement);
         transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(movement), rotationSpeed);
 
         transform.Translate(movement * movementSpeed * Time.deltaTime, Space.World);
